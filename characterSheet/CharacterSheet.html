@@ -377,6 +377,9 @@ Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
     </tr>
 </table>
 
+<!-- Hidden values to store Fertigkeit and Eigenschafts values -->
+<input type="hidden" name="attr_currentFertigkeitsValue" value="0">
+<input type="hidden" name="attr_currentEigenschaftsValue" value="0">
 
 <script type="text/worker">
 
@@ -400,27 +403,15 @@ on("change:Willen", function() {
 //aktives_Attribut wird zu Koerper, Geist oder Sozial per klick
 on("change:aktives_Attribut", function() {
    getAttrs(["aktives_Attribut","Wuerfel","Koerper","Geist","Sozial"], function(values) {
-       if (values.aktives_Attribut == "Koerper") {
-            setAttrs({
-                Wuerfel: values.Koerper
-            });
-        } else if (values.aktives_Attribut == "Geist"){
-            setAttrs({
-                Wuerfel: values.Geist
-            });
-        } else {
-            setAttrs({
-                Wuerfel: values.Sozial
-            });
-        }
-
+     setAttrs({Wuerfel: values[values.aktives_Attribut]});
    });
 });
 
 on("change:aktive_Eigenschaft", function() {
   console.log("change aktive_Eigenschaft");
   getAttrs(["aktive_Eigenschaft","Kraftvoll","Geschickt","Durchdacht","Intuitiv","Empatisch","Gerissen"], function(values) {
-    currentEigenschaftsValue = parseInt(values[values.aktive_Eigenschaft], 10);
+    var tempCurrentEigenschaftsValue = parseInt(values[values.aktive_Eigenschaft], 10);
+    setAttrs({currentEigenschaftsValue: tempCurrentEigenschaftsValue});
     updateSteigerungspunkte();
   });
 });
@@ -431,7 +422,8 @@ on("change:aktive_Fertigkeit", function() {
 ,"Fertigkeit_4_wert","Fertigkeit_5_wert","Fertigkeit_6_wert","Fertigkeit_7_wert"
 ,"Fertigkeit_8_wert","Fertigkeit_9_wert","Fertigkeit_10_wert","Fertigkeit_11_wert"
 ,"Fertigkeit_12_wert","Fertigkeit_13_wert","Fertigkeit_14_wert","Fertigkeit_15_wert"], function(values) {
-    currentFertigkeitsValue = parseInt(values[values.aktive_Fertigkeit], 10);
+    var tempCurrentFertigkeitsValue = parseInt(values[values.aktive_Fertigkeit], 10);
+    setAttrs({currentFertigkeitsValue: tempCurrentFertigkeitsValue});
     updateSteigerungspunkte();
   });
 });
@@ -439,13 +431,14 @@ on("change:aktive_Fertigkeit", function() {
 
 var updateSteigerungspunkte = function () {
   console.log("updateSteigerungspunkte");
-  setAttrs({Steigerungspunkte: (currentFertigkeitsValue + currentEigenschaftsValue)});
+  getAttrs(["currentFertigkeitsValue", "currentEigenschaftsValue"], function(values) {
+    var tempCurrentFertigkeitsValue  = parseInt(values.currentFertigkeitsValue);
+    var tempCurrentEigenschaftsValue = parseInt(values.currentEigenschaftsValue);
+    setAttrs({Steigerungspunkte: (tempCurrentFertigkeitsValue + tempCurrentEigenschaftsValue)});
+  });
 };
-
-var currentFertigkeitsValue = 0;
-var currentEigenschaftsValue = 0;
 // ... etc
 // Anzeige Steigerungspunkte / Verbraucht mit aktuellen Würfeln
 
 </script>
-test16
+test19

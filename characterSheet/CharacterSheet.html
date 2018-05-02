@@ -125,6 +125,23 @@ Kampagnen Aspekte:<br>
         <td valign="top" align="center" width="50%">
 Anzahl an Würfel: <span name="attr_Wuerfel" value="0"></span><br>
 Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
+
+<!-- Sheet roll html -->
+<table align="center">
+  <tr>
+    <td>d12</td>
+    <td>d8</td>
+    <td>d6</td>
+    <td>Übrige Würfel: <span name="attr_SR_RemainingDice" value="0" /></td>
+  </tr>
+  <tr>
+    <td><input type="number" name="attr_Die_D12" /></td>
+    <td><input type="number" name="attr_Die_D8" /></td>
+    <td><input type="number" name="attr_Die_D6" /></td>
+    <td>Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
+  </tr>
+</table>
+
 <!-- Allgemein -->
 <table align="center">
     <tr>
@@ -402,9 +419,12 @@ on("change:Willen", function() {
 
 //aktives_Attribut wird zu Koerper, Geist oder Sozial per klick
 on("change:aktives_Attribut", function() {
-   getAttrs(["aktives_Attribut","Wuerfel","Koerper","Geist","Sozial"], function(values) {
-     setAttrs({Wuerfel: values[values.aktives_Attribut]});
-   });
+  console.log("# in change:aktives_Attribut");
+  getAttrs(["aktives_Attribut","Wuerfel","Koerper","Geist","Sozial"], function(values) {
+    setAttrs({Wuerfel: values[values.aktives_Attribut]});
+    updateRemainingDie();
+    updateRemainingSteigerungspunkte();
+  });
 });
 
 on("change:aktive_Eigenschaft", function() {
@@ -432,13 +452,33 @@ on("change:aktive_Fertigkeit", function() {
 var updateSteigerungspunkte = function () {
   console.log("updateSteigerungspunkte");
   getAttrs(["currentFertigkeitsValue", "currentEigenschaftsValue"], function(values) {
-    var tempCurrentFertigkeitsValue  = parseInt(values.currentFertigkeitsValue);
-    var tempCurrentEigenschaftsValue = parseInt(values.currentEigenschaftsValue);
+    var tempCurrentFertigkeitsValue  = parseInt(values.currentFertigkeitsValue, 10);
+    var tempCurrentEigenschaftsValue = parseInt(values.currentEigenschaftsValue, 10);
     setAttrs({Steigerungspunkte: (tempCurrentFertigkeitsValue + tempCurrentEigenschaftsValue)});
+  });
+};
+
+var updateRemainingDie = function () {
+  console.log("# at updateRemainingDie");
+  getAttrs(["Wuerfel", "Die_D12", "Die_D8", "Die_D6"], function(values) {
+    var tempDiceCount = parseInt(values.Wuerfel, 10);
+    tempDiceCount = tempDiceCount - values.Die_D12 - values.Die_D8 - values.Die_D6;
+    console.log("# " + values.Die_D12 + " " + values.Die_D8 + " " + values.Die_D6);
+    setAttrs({SR_RemainingDice: tempDiceCount});
+  });
+};
+
+var updateRemainingSteigerungspunkte = function() {
+  console.log("# at updateRemainingSteigerungspunkte");
+  getAttrs(["Steigerungspunkte", "Die_D12", "Die_D8"], function(values) {
+    var tempSpCount = parseInt(values.Steigerungspunkte, 10);
+    tempSpCount = tempSpCount - (values.Die_D12 * 3) - values.Die_D8;
+    console.log("# " + values.Die_D12 + " " + values.Die_D8);
+    setAttrs({SR_RemainingSteigerungspunkte: tempSpCount});
   });
 };
 // ... etc
 // Anzeige Steigerungspunkte / Verbraucht mit aktuellen Würfeln
 
 </script>
-test19
+test31

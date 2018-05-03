@@ -93,7 +93,7 @@ function doActionUnholy(whoRolled) {
 function rollPositiveDice12(whoRolled) {
 
 	var dice_sides = 12;
-	var roll = Math.floor(Math.random() * dice_sides + 1);
+	var roll = randomInteger(dice_sides);
 
 	switch(roll) {
 		case 1: doActionNothing(whoRolled); break;
@@ -158,7 +158,7 @@ function rollPositiveDice6(whoRolled) {
  */
 function rollNegativeeDice12(whoRolled) {
 	var dice_sides = 12;
-	var roll = Math.floor(Math.random() * dice_sides + 1);
+	var roll = randomInteger(dice_sides);
 
 	switch(roll) {
 		case 1: doActionNothing(whoRolled); break;
@@ -182,7 +182,7 @@ function rollNegativeeDice12(whoRolled) {
  */
 function rollNegativeeDice8(whoRolled) {
 	var dice_sides = 8;
-	var roll = Math.floor(Math.random() * dice_sides + 1 );
+	var roll = randomInteger(dice_sides);
 
 	switch(roll) {
 		case 1: doActionNothing(whoRolled); break;
@@ -202,7 +202,7 @@ function rollNegativeeDice8(whoRolled) {
  */
 function rollNegativeeDice6(whoRolled) {
 	var dice_sides = 6;
-	var roll = Math.floor(Math.random() * dice_sides + 1 );
+	var roll = randomInteger(dice_sides);
 	switch(roll) {
 		case 1: doActionNothing(whoRolled); break;
 		case 2: doActionNothing(whoRolled); break;

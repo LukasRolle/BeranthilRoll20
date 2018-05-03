@@ -219,17 +219,29 @@ function rollNegativeeDice6(whoRolled) {
  * @param whoRolled The player who rolled the dice.
  */
 function rollDice(dice, whoRolled) {
+		var characterPosition = 0;
+		if (dice.indexOf("p") != -1 || dice.indexOf("n") != -1) {
+			characterPosition = dice.indexOf("p");
+			if (characterPosition === -1) {
+				characterPosition = dice.indexOf("n");
+			}
+		} else {
+			log("unknown type of dice");
+			return;
+		}
 
-    var dice_count = dice[0];
-    if (isNaN(dice_count)) {
-        dice_count = 1;
-        dice_type = dice;
-    } else {
-        dice_type = dice.substring(1);
-    }
-    for (var i = 0; i < dice_count; i++) {
+		var diceType = dice.substring(characterPosition);
+		var diceCount = dice.substring(0,characterPosition);
+		if (!diceCount) {
+			diceCount = 1;
+		}
+		log(diceType);
+		log(diceCount);
+
+
+    for (var i = 0; i < diceCount; i++) {
     sendChat(whoRolled,"/direct  ");
-        switch(dice_type) {
+        switch(diceType) {
             case "p12": rollPositiveDice12(whoRolled);  break;
             case "p8":  rollPositiveDice8(whoRolled);   break;
             case "p6":  rollPositiveDice6(whoRolled);   break;
@@ -246,10 +258,8 @@ function rollDice(dice, whoRolled) {
  * Tests all dices of this script.
  */
 function testAllDice(player) {
-
 	// Test of all functions returned via console.
 	for (var i = 0; i < 12; i++) {
-
 		executeChatCommand("!roll p12", player);
 		executeChatCommand("!roll 2p8", player);
 		executeChatCommand("!roll 3p6", player);
@@ -272,27 +282,26 @@ on("chat:message", function(msg) {
 function executeChatCommand(command, player) {
 
 	if(command === null) {
-		console.log("command was emtpy or null.");
+		log("command was emtpy or null.");
 		return;
 	}
 
 	command = command.toLowerCase();
 
 	if(command.indexOf("!roll") !== -1 && command.indexOf("!hq test") !== -1) {
-		console.log("command not known.");
+		log("command not known.");
 		return;
 	}
 
 	//execute !roll command
 	if (command.indexOf("!roll") == 0) {
-
+		sendChat(player,("/direct Rolled " + command.substring(6)));
 		//Get the dice from the command.
 		command = command.split(" ");
     for (var i = 1; i < command.length; i++) {
   		rollDice(command[i], player);
     }
 	}
-
 	else if (command.indexOf("!hq test") !== -1) {
 		testAllDice(player);
 	}

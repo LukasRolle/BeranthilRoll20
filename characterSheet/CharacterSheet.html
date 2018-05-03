@@ -426,7 +426,6 @@ on("change:aktives_Attribut", function() {
   getAttrs(["aktives_Attribut","Wuerfel","Koerper","Geist","Sozial"], function(values) {
     setAttrs({Wuerfel: values[values.aktives_Attribut]});
     updateRemainingDice();
-    updateRemainingSteigerungspunkte();
   });
 });
 
@@ -437,6 +436,7 @@ on("change:aktive_Eigenschaft", function() {
     var tempCurrentEigenschaftsValue = parseInt(values[values.aktive_Eigenschaft], 10);
     setAttrs({currentEigenschaftsValue: tempCurrentEigenschaftsValue});
     updateSteigerungspunkte();
+    updateRemainingSteigerungspunkte();
   });
 });
 
@@ -450,6 +450,7 @@ on("change:aktive_Fertigkeit", function() {
     var tempCurrentFertigkeitsValue = parseInt(values[values.aktive_Fertigkeit], 10);
     setAttrs({currentFertigkeitsValue: tempCurrentFertigkeitsValue});
     updateSteigerungspunkte();
+    updateRemainingSteigerungspunkte();
   });
 });
 
@@ -463,6 +464,10 @@ var updateSteigerungspunkte = function () {
     setAttrs({Steigerungspunkte: (tempCurrentFertigkeitsValue + tempCurrentEigenschaftsValue)});
   });
 };
+// Trigger for updateRemainingDice
+on("change:Die_D12 change:Die_D8 change:Die_D6", function() {
+  updateRemainingDice();
+});
 
 // Function that updates the remaining dice, that can still be used by the
 // player, depending on the dice chosen.
@@ -470,11 +475,18 @@ var updateRemainingDice = function () {
   console.log("# at updateRemainingDice");
   getAttrs(["Wuerfel", "Die_D12", "Die_D8", "Die_D6"], function(values) {
     var tempDiceCount = parseInt(values.Wuerfel, 10);
-    tempDiceCount = tempDiceCount - values.Die_D12 - values.Die_D8 - values.Die_D6;
-    console.log("# " + values.Die_D12 + " " + values.Die_D8 + " " + values.Die_D6);
+    tempDiceCount = tempDiceCount - values.Die_D12;
+    tempDiceCount = tempDiceCount - values.Die_D8;
+    tempDiceCount = tempDiceCount - values.Die_D6;
+    console.log("# " + values.Wuerfel + " " + tempDiceCount + " " + values.Die_D12 + " " + values.Die_D8 + " " + values.Die_D6);
     setAttrs({SR_RemainingDice: tempDiceCount});
   });
 };
+
+// Trigger for updateRemainingSteigerungspunkte
+on("change:Die_D12 change:Die_D8 change:Die_D6", function() {
+  updateRemainingSteigerungspunkte();
+});
 
 // Function that updates the remaining Steigerungspunkte, that can still be used
 // by the player based on the dice chosen.
@@ -488,11 +500,5 @@ var updateRemainingSteigerungspunkte = function() {
   });
 };
 // ... etc
-
-
-var sheetRoll = function() {
-
-};
-
 </script>
-test33
+test37

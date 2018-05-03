@@ -139,6 +139,7 @@ Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
     <td><input type="number" name="attr_Die_D8" /></td>
     <td><input type="number" name="attr_Die_D6" /></td>
     <td>Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
+    <td><button type="roll" name="roll_SheetRoll" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></td>
   </tr>
 </table>
 
@@ -400,6 +401,7 @@ Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
 
 <script type="text/worker">
 
+// Sets the physical health of the character, based on stamina.
 on("change:Ausdauer", function() {
    getAttrs(["Ausdauer","KWunden_max"], function(values) {
       setAttrs({
@@ -408,6 +410,7 @@ on("change:Ausdauer", function() {
    });
 });
 
+// Sets the mental health of the character, based on will.
 on("change:Willen", function() {
    getAttrs(["Willen","GWunden_max"], function(values) {
       setAttrs({
@@ -422,11 +425,12 @@ on("change:aktives_Attribut", function() {
   console.log("# in change:aktives_Attribut");
   getAttrs(["aktives_Attribut","Wuerfel","Koerper","Geist","Sozial"], function(values) {
     setAttrs({Wuerfel: values[values.aktives_Attribut]});
-    updateRemainingDie();
+    updateRemainingDice();
     updateRemainingSteigerungspunkte();
   });
 });
 
+// Update the active Eigenschaft, when the player changes the active Eigenschaft.
 on("change:aktive_Eigenschaft", function() {
   console.log("change aktive_Eigenschaft");
   getAttrs(["aktive_Eigenschaft","Kraftvoll","Geschickt","Durchdacht","Intuitiv","Empatisch","Gerissen"], function(values) {
@@ -436,6 +440,7 @@ on("change:aktive_Eigenschaft", function() {
   });
 });
 
+// Update the active ability, when the player changes the active ability.
 on("change:aktive_Fertigkeit", function() {
   console.log("change aktive_Fertigkeit");
   getAttrs(["aktive_Fertigkeit","Fertigkeit_1_wert","Fertigkeit_2_wert","Fertigkeit_3_wert"
@@ -448,7 +453,8 @@ on("change:aktive_Fertigkeit", function() {
   });
 });
 
-
+// Function that calculates the maximum of the steigerungspunkte, that a character
+// has, depending on the chosen Fertigkeit and Eigenschaft.
 var updateSteigerungspunkte = function () {
   console.log("updateSteigerungspunkte");
   getAttrs(["currentFertigkeitsValue", "currentEigenschaftsValue"], function(values) {
@@ -458,8 +464,10 @@ var updateSteigerungspunkte = function () {
   });
 };
 
-var updateRemainingDie = function () {
-  console.log("# at updateRemainingDie");
+// Function that updates the remaining dice, that can still be used by the
+// player, depending on the dice chosen.
+var updateRemainingDice = function () {
+  console.log("# at updateRemainingDice");
   getAttrs(["Wuerfel", "Die_D12", "Die_D8", "Die_D6"], function(values) {
     var tempDiceCount = parseInt(values.Wuerfel, 10);
     tempDiceCount = tempDiceCount - values.Die_D12 - values.Die_D8 - values.Die_D6;
@@ -468,6 +476,8 @@ var updateRemainingDie = function () {
   });
 };
 
+// Function that updates the remaining Steigerungspunkte, that can still be used
+// by the player based on the dice chosen.
 var updateRemainingSteigerungspunkte = function() {
   console.log("# at updateRemainingSteigerungspunkte");
   getAttrs(["Steigerungspunkte", "Die_D12", "Die_D8"], function(values) {
@@ -478,7 +488,11 @@ var updateRemainingSteigerungspunkte = function() {
   });
 };
 // ... etc
-// Anzeige Steigerungspunkte / Verbraucht mit aktuellen Würfeln
+
+
+var sheetRoll = function() {
+
+};
 
 </script>
-test31
+test33

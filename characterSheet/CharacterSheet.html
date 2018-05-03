@@ -133,6 +133,7 @@ Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
     <td>d8</td>
     <td>d6</td>
     <td>Übrige Würfel: <span name="attr_SR_RemainingDice" value="0" /></td>
+    <td><input type="checkbox" name="attr_SR_ResetButton" checked="true" /></td>
   </tr>
   <tr>
     <td><input type="number" name="attr_Die_D12" /></td>
@@ -436,7 +437,6 @@ on("change:aktive_Eigenschaft", function() {
     var tempCurrentEigenschaftsValue = parseInt(values[values.aktive_Eigenschaft], 10);
     setAttrs({currentEigenschaftsValue: tempCurrentEigenschaftsValue});
     updateSteigerungspunkte();
-    updateRemainingSteigerungspunkte();
   });
 });
 
@@ -450,7 +450,6 @@ on("change:aktive_Fertigkeit", function() {
     var tempCurrentFertigkeitsValue = parseInt(values[values.aktive_Fertigkeit], 10);
     setAttrs({currentFertigkeitsValue: tempCurrentFertigkeitsValue});
     updateSteigerungspunkte();
-    updateRemainingSteigerungspunkte();
   });
 });
 
@@ -462,8 +461,17 @@ var updateSteigerungspunkte = function () {
     var tempCurrentFertigkeitsValue  = parseInt(values.currentFertigkeitsValue, 10);
     var tempCurrentEigenschaftsValue = parseInt(values.currentEigenschaftsValue, 10);
     setAttrs({Steigerungspunkte: (tempCurrentFertigkeitsValue + tempCurrentEigenschaftsValue)});
+    updateRemainingSteigerungspunkte();
   });
 };
+
+// Reset Button functionality
+on("change:SR_ResetButton", function() {
+  setAttrs({Die_D12: 0});
+  setAttrs({Die_D8: 0});
+  setAttrs({Die_D6: 0});
+});
+
 // Trigger for updateRemainingDice
 on("change:Die_D12 change:Die_D8 change:Die_D6", function() {
   updateRemainingDice();
@@ -501,4 +509,4 @@ var updateRemainingSteigerungspunkte = function() {
 };
 // ... etc
 </script>
-test37
+test41

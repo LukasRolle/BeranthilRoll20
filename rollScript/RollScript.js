@@ -289,7 +289,7 @@ function announceRollResults(whoRolled) {
 	if(rollResults[1] >= 0) {
 		rollResultString.push("Erfolge");
 	} else {
-		rollResultString.push("Fehlschlag");
+		rollResultString.push("Fehlschläge");
 	}
 	rollResultString.push(Math.abs(rollResults[2]));
 	if(rollResults[2] >= 0) {

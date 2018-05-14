@@ -433,7 +433,8 @@ on("change:aktives_Attribut", function() {
 // Update the active Eigenschaft, when the player changes the active Eigenschaft.
 on("change:aktive_Eigenschaft", function() {
   console.log("change aktive_Eigenschaft");
-  getAttrs(["aktive_Eigenschaft","Kraftvoll","Geschickt","Durchdacht","Intuitiv","Empatisch","Gerissen"], function(values) {
+  getAttrs(["aktive_Eigenschaft","Kraftvoll","Geschickt","Durchdacht",
+  "Intuitiv","Empatisch","Gerissen"], function(values) {
     var tempCurrentEigenschaftsValue = parseInt(values[values.aktive_Eigenschaft], 10);
     setAttrs({currentEigenschaftsValue: tempCurrentEigenschaftsValue});
     updateSteigerungspunkte();
@@ -443,13 +444,12 @@ on("change:aktive_Eigenschaft", function() {
 // Update the active ability, when the player changes the active ability.
 on("change:aktive_Fertigkeit", function() {
   console.log("change aktive_Fertigkeit");
-  getAttrs(["aktive_Fertigkeit","Fertigkeit_1_wert","Fertigkeit_2_wert","Fertigkeit_3_wert"
-,"Fertigkeit_4_wert","Fertigkeit_5_wert","Fertigkeit_6_wert","Fertigkeit_7_wert"
-,"Fertigkeit_8_wert","Fertigkeit_9_wert","Fertigkeit_10_wert","Fertigkeit_11_wert"
-,"Fertigkeit_12_wert","Fertigkeit_13_wert","Fertigkeit_14_wert","Fertigkeit_15_wert"], function(values) {
-    var tempCurrentFertigkeitsValue = parseInt(values[values.aktive_Fertigkeit], 10);
-    setAttrs({currentFertigkeitsValue: tempCurrentFertigkeitsValue});
-    updateSteigerungspunkte();
+  getAttrs(["aktive_Fertigkeit"], function(values) {                            //get the number of the curently active ability
+    getAttrs([values.aktive_Fertigkeit], function(innerValues) {                //get the value of the currently active ability
+      var tempCurrentFertigkeitsValue = parseInt(innerValues[values.aktive_Fertigkeit], 10);
+      setAttrs({currentFertigkeitsValue: tempCurrentFertigkeitsValue});
+      updateSteigerungspunkte();
+    });
   });
 });
 
@@ -509,4 +509,4 @@ var updateRemainingSteigerungspunkte = function() {
 };
 // ... etc
 </script>
-test41
+test43

@@ -136,11 +136,21 @@ Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
     <td><input type="checkbox" name="attr_SR_ResetButton" checked="true" /></td>
   </tr>
   <tr>
+    <td>Positive Würfel:</td>
     <td><input type="number" name="attr_Die_D12" /></td>
     <td><input type="number" name="attr_Die_D8" /></td>
     <td><input type="number" name="attr_Die_D6" /></td>
     <td>Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
-    <td><button type="roll" name="roll_SheetRoll" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></td>
+    <td><button type="roll" name="roll_SheetRollSplit" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></td>
+  </tr>
+  <tr>
+    <td>Negative Würfel:</td>
+    <td><input type="number" name="attr_Die_N12" /></td>
+    <td><input type="number" name="attr_Die_N8" /></td>
+    <td><input type="number" name="attr_Die_N6" /></td>
+    <td>Wurf mit Schwierigkeitsstufe </td>
+    <td><button type="roll" name="roll_SheetRollComplete"
+      value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6 @{Die_N12}n12 @{Die_N8}n8 @{Die_N6}n6" /></td>
   </tr>
 </table>
 
@@ -509,4 +519,4 @@ var updateRemainingSteigerungspunkte = function() {
 };
 // ... etc
 </script>
-test43
+test45

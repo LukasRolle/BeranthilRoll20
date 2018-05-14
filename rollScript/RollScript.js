@@ -1,3 +1,10 @@
+// Resources
+
+// items are advantages, successes and crits in that order in the roll order
+// negative roll results are -
+var rollResults = [0,0,0];
+
+
 function doActionNothing(whoRolled) {
 	sendChat(whoRolled,"/direct <img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you'>");
 }
@@ -7,6 +14,7 @@ function doActionNothing(whoRolled) {
  */
 function doActionAdvantage(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil'>");
+		rollResults[0]++;
 }
 
 /*
@@ -14,6 +22,7 @@ function doActionAdvantage(whoRolled) {
  */
 function doActionSuccess(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/znO45cy.png' title='Erfolg'>");
+		rollResults[1]++;
 }
 
 /*
@@ -21,20 +30,8 @@ function doActionSuccess(whoRolled) {
  */
 function doActionSuccessAdvantage(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil'>");
-}
-
-/*
- * Executes the "erfolg2" Action.
- */
-function doActionSuccessTypeTwo(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg'>");
-}
-
-/*
- * Executes the "drache" Action.
- */
-function doActionDragon(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>");
+		rollResults[0]++;
+		rollResults[1]++;
 }
 
 /*
@@ -42,6 +39,23 @@ function doActionDragon(whoRolled) {
  */
 function doActionAdvantageTypeTwo(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil'>");
+		rollResults[0] += 2;
+}
+
+/*
+ * Executes the "erfolg2" Action.
+ */
+function doActionSuccessTypeTwo(whoRolled) {
+    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg'>");
+		rollResults[1] += 2;
+}
+
+/*
+ * Executes the "drache" Action.
+ */
+function doActionDragon(whoRolled) {
+    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>");
+		rollResults[2]++;
 }
 
 /*
@@ -49,6 +63,7 @@ function doActionAdvantageTypeTwo(whoRolled) {
  */
 function doActionDisadvantage(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil'>");
+		rollResults[0]--;
 }
 
 /*
@@ -56,6 +71,7 @@ function doActionDisadvantage(whoRolled) {
  */
 function doActionDisadvantageTypeTwo(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil'>");
+		rollResults[0] -= 2;
 }
 
 /*
@@ -63,13 +79,15 @@ function doActionDisadvantageTypeTwo(whoRolled) {
  */
 function doActionMiss(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag'>");
+		rollResults[1]--;
 }
 
 /*
  * Executes the "fehlschlag2" Action.
  */
 function doActionMissTypeTwo(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Nachteil'>");
+    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag'>");
+		rollResults[1] -= 2;
 }
 
 /*
@@ -77,6 +95,8 @@ function doActionMissTypeTwo(whoRolled) {
  */
 function doActionDisadvantageMiss(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil'>");
+		rollResults[0]--;
+		rollResults[1]--;
 }
 
 /*
@@ -84,6 +104,7 @@ function doActionDisadvantageMiss(whoRolled) {
  */
 function doActionUnholy(whoRolled) {
     sendChat(whoRolled,"/direct <img src='https://i.imgur.com/D9IfpDV.png?1'>");
+		rollResults[2]--;
 }
 
 /*
@@ -238,7 +259,6 @@ function rollDice(dice, whoRolled) {
 		log(diceType);
 		log(diceCount);
 
-
     for (var i = 0; i < diceCount; i++) {
     sendChat(whoRolled,"/direct  ");
         switch(diceType) {
@@ -251,7 +271,33 @@ function rollDice(dice, whoRolled) {
         }
 
     }
+}
 
+/*
+ * Announces the results of the complete Roll of the rolling player
+ * @param whoRolled The player who rolled the dice.
+ */
+function announceRollResults(whoRolled) {
+	var rollResultString = [];
+	rollResultString.push(Math.abs(rollResults[0]));
+	if(rollResults[0] >= 0) {
+		rollResultString.push("Vorteile");
+	} else {
+		rollResultString.push("Nachteile")
+	}
+	rollResultString.push(Math.abs(rollResults[1]));
+	if(rollResults[1] >= 0) {
+		rollResultString.push("Erfolge");
+	} else {
+		rollResultString.push("Fehlschlag");
+	}
+	rollResultString.push(Math.abs(rollResults[2]));
+	if(rollResults[2] >= 0) {
+		rollResultString.push("Drachen")
+	} else {
+		rollResultString.push("Unheile")
+	}
+	sendChat(whoRolled,rollResultString.join(" "));
 }
 
 /*
@@ -298,9 +344,15 @@ function executeChatCommand(command, player) {
 		sendChat(player,("/direct Rolled " + command.substring(6)));
 		//Get the dice from the command.
 		command = command.split(" ");
+
+
+		log("rollResults before" + rollResults);
     for (var i = 1; i < command.length; i++) {
   		rollDice(command[i], player);
     }
+		announceRollResults(player);
+		log("rollResults after" + rollResults);
+		rollResults = [0,0,0];
 	}
 	else if (command.indexOf("!hq test") !== -1) {
 		testAllDice(player);

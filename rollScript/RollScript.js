@@ -14,10 +14,20 @@ var rollStringsNegative = [];
  * Executes the "nothing" Action.
  */
 function doActionNothing(whoRolled, dice) {
-	var image = "<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you'>";
+	var image = "";
 	if (dice[0] == "p") {
+		switch(dice.substring(1)) {
+			case "6": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d6'>"; break;
+			case "8": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d8'>"; break;
+			case "12": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d12'>"; break;
+		}
 		rollStringsPositive.push(image);
 	} else {
+		switch(dice.substring(1)) {
+			case "6": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d6'>"; break;
+			case "8": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d8'>"; break;
+			case "12": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d12'>"; break;
+		}
 		rollStringsNegative.push(image);
 	}
 }
@@ -25,99 +35,171 @@ function doActionNothing(whoRolled, dice) {
 /*
  * Executes the "vorteil" Action.
  */
-function doActionAdvantage(whoRolled) {
-    rollStringsPositive.push("<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil'>");
-		rollResultsPositive[0]++;
+function doActionAdvantage(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil d12'>"; break;
+	}
+	rollStringsPositive.push(image);
+	rollResultsPositive[0]++;
 }
 
 /*
  * Executes the "erfolg" Action.
  */
-function doActionSuccess(whoRolled) {
-    rollStringsPositive.push("<img src='https://i.imgur.com/znO45cy.png' title='Erfolg'>");
-		rollResultsPositive[1]++;
+function doActionSuccess(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/znO45cy.png' title='Erfolg d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/znO45cy.png' title='Erfolg d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/znO45cy.png' title='Erfolg d12'>"; break;
+	}
+	rollStringsPositive.push(image);
+	rollResultsPositive[1]++;
 }
 
 /*
  * Executes the "ErfolgVorteil" Action.
  */
-function doActionSuccessAdvantage(whoRolled) {
-    rollStringsPositive.push("<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil'>");
-		rollResultsPositive[0]++;
-		rollResultsPositive[1]++;
+function doActionSuccessAdvantage(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil d12'>"; break;
+	}
+	rollStringsPositive.push(image);
+	rollResultsPositive[0]++;
+	rollResultsPositive[1]++;
 }
 
 /*
  * Executes the "vorteil2" Action.
  */
-function doActionAdvantageTypeTwo(whoRolled) {
-    rollStringsPositive.push("<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil'>");
-		rollResultsPositive[0] += 2;
+function doActionAdvantageTypeTwo(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil d12'>"; break;
+	}
+	rollStringsPositive.push(image);
+	rollResultsPositive[0] += 2;
 }
 
 /*
  * Executes the "erfolg2" Action.
  */
-function doActionSuccessTypeTwo(whoRolled) {
-    rollStringsPositive.push("<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg'>");
-		rollResultsPositive[1] += 2;
+function doActionSuccessTypeTwo(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg d12'>"; break;
+	}
+	rollStringsPositive.push(image);
+	rollResultsPositive[1] += 2;
 }
 
 /*
  * Executes the "drache" Action.
  */
-function doActionDragon(whoRolled) {
-    rollStringsPositive.push("<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>");
-		rollResultsPositive[2]++;
+function doActionDragon(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL d12'>"; break;
+	}
+	rollStringsPositive.push(image);
+	rollResultsPositive[2]++;
 }
 
 /*
  * Executes the "nachteil" Action.
  */
-function doActionDisadvantage(whoRolled) {
-    rollStringsNegative.push("<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil'>");
-		rollResultsNegative[0]++;
+function doActionDisadvantage(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil d12'>"; break;
+	}
+	rollStringsNegative.push(image);
+	rollResultsNegative[0]++;
 }
 
 /*
  * Executes the "nachteil2" Action.
  */
-function doActionDisadvantageTypeTwo(whoRolled) {
-    rollStringsNegative.push("<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil'>");
-		rollResultsNegative[0] += 2;
+function doActionDisadvantageTypeTwo(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil d12'>"; break;
+	}
+	rollStringsNegative.push(image);
+	rollResultsNegative[0] += 2;
 }
 
 /*
  * Executes the "fehlschlag" Action.
  */
-function doActionMiss(whoRolled) {
-    rollStringsNegative.push("<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag'>");
-		rollResultsNegative[1]++;
+function doActionMiss(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag d12'>"; break;
+	}
+	rollStringsNegative.push(image);
+	rollResultsNegative[1]++;
 }
 
 /*
  * Executes the "fehlschlag2" Action.
  */
-function doActionMissTypeTwo(whoRolled) {
-    rollStringsNegative.push("<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag'>");
-		rollResultsNegative[1] += 2;
+function doActionMissTypeTwo(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag d12'>"; break;
+	}
+	rollStringsNegative.push(image);
+	rollResultsNegative[1] += 2;
 }
 
 /*
  * Executes the "nachteilFehlschlag" Action.
  */
-function doActionDisadvantageMiss(whoRolled) {
-    rollStringsNegative.push("<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil'>");
-		rollResultsNegative[0]++;
-		rollResultsNegative[1]++;
+function doActionDisadvantageMiss(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil d12'>"; break;
+	}
+	rollStringsNegative.push(image);
+	rollResultsNegative[0]++;
+	rollResultsNegative[1]++;
 }
 
 /*
  * Executes the "unheil" Action.
  */
-function doActionUnholy(whoRolled) {
-    rollStringsNegative.push("<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL'>");
-		rollResultsNegative[2]++;
+function doActionUnholy(whoRolled, dice) {
+	var image = "";
+	switch(dice.substring(1)) {
+		case "6": image = 	"<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL d6'>"; break;
+		case "8": image = 	"<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL d8'>"; break;
+		case "12": image = 	"<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL d12'>"; break;
+	}
+	rollStringsNegative.push(image);
+	rollResultsNegative[2]++;
 }
 
 /*

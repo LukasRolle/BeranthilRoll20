@@ -1,5 +1,34 @@
 <span name="attr_Fertigkeits_Wert"></span>
 <span name="attr_Eigenschafts_Wert"></span>
+<!-- Sheet roll html -->
+<table align="center" style="margin-bottom:20px;">
+  <tr>
+    <td></td>
+    <td>d12</td>
+    <td>d8</td>
+    <td>d6</td>
+    <td>Übrige Würfel: <span name="attr_SR_RemainingDice" value="0" /></td>
+    <td><input type="checkbox" name="attr_SR_ResetButton" checked="true" /></td>
+  </tr>
+  <tr>
+    <td>Positive Würfel:</td>
+    <td><input type="number" name="attr_Die_D12" /></td>
+    <td><input type="number" name="attr_Die_D8" /></td>
+    <td><input type="number" name="attr_Die_D6" /></td>
+    <td>Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
+    <td><button type="roll" name="roll_SheetRollSplit" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></td>
+  </tr>
+  <tr>
+    <td>Negative Würfel:</td>
+    <td><input type="number" name="attr_Die_N12" /></td>
+    <td><input type="number" name="attr_Die_N8" /></td>
+    <td><input type="number" name="attr_Die_N6" /></td>
+    <td>Wurf mit Schwierigkeitsstufe </td>
+    <td><button type="roll" name="roll_SheetRollComplete"
+      value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6 @{Die_N12}n12 @{Die_N8}n8 @{Die_N6}n6" /></td>
+  </tr>
+</table>
+
 <table>
     <tr>
         <td valign="top" align="center" width="50%">
@@ -125,34 +154,6 @@ Kampagnen Aspekte:<br>
         <td valign="top" align="center" width="50%">
 Anzahl an Würfel: <span name="attr_Wuerfel" value="0"></span><br>
 Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
-
-<!-- Sheet roll html -->
-<table align="center">
-  <tr>
-    <td>d12</td>
-    <td>d8</td>
-    <td>d6</td>
-    <td>Übrige Würfel: <span name="attr_SR_RemainingDice" value="0" /></td>
-    <td><input type="checkbox" name="attr_SR_ResetButton" checked="true" /></td>
-  </tr>
-  <tr>
-    <td>Positive Würfel:</td>
-    <td><input type="number" name="attr_Die_D12" /></td>
-    <td><input type="number" name="attr_Die_D8" /></td>
-    <td><input type="number" name="attr_Die_D6" /></td>
-    <td>Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
-    <td><button type="roll" name="roll_SheetRollSplit" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></td>
-  </tr>
-  <tr>
-    <td>Negative Würfel:</td>
-    <td><input type="number" name="attr_Die_N12" /></td>
-    <td><input type="number" name="attr_Die_N8" /></td>
-    <td><input type="number" name="attr_Die_N6" /></td>
-    <td>Wurf mit Schwierigkeitsstufe </td>
-    <td><button type="roll" name="roll_SheetRollComplete"
-      value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6 @{Die_N12}n12 @{Die_N8}n8 @{Die_N6}n6" /></td>
-  </tr>
-</table>
 
 <!-- Allgemein -->
 <table align="center">
@@ -522,4 +523,4 @@ var updateRemainingSteigerungspunkte = function() {
 };
 // ... etc
 </script>
-test45
+test46

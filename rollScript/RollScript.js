@@ -4,16 +4,23 @@
 // negative roll results are -
 var rollResultsPositive = [0,0,0];
 var rollResultsNegative = [0,0,0];
+var rollStringsPositive = [];
+var rollStringsNegative = [];
 
-function doActionNothing(whoRolled) {
-	sendChat(whoRolled,"/direct <img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you'>");
+function doActionNothing(whoRolled, dice) {
+	var image = "<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you'>";
+	if (dice[0] == "p") {
+		rollStringsPositive.push(image);
+	} else {
+		rollStringsNegative.push(image);
+	}
 }
 
 /*
  * Executes the "vorteil" Action.
  */
 function doActionAdvantage(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil'>");
+    rollStringsPositive.push("<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil'>");
 		rollResultsPositive[0]++;
 }
 
@@ -21,7 +28,7 @@ function doActionAdvantage(whoRolled) {
  * Executes the "erfolg" Action.
  */
 function doActionSuccess(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/znO45cy.png' title='Erfolg'>");
+    rollStringsPositive.push("<img src='https://i.imgur.com/znO45cy.png' title='Erfolg'>");
 		rollResultsPositive[1]++;
 }
 
@@ -29,7 +36,7 @@ function doActionSuccess(whoRolled) {
  * Executes the "ErfolgVorteil" Action.
  */
 function doActionSuccessAdvantage(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil'>");
+    rollStringsPositive.push("<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil'>");
 		rollResultsPositive[0]++;
 		rollResultsPositive[1]++;
 }
@@ -38,7 +45,7 @@ function doActionSuccessAdvantage(whoRolled) {
  * Executes the "vorteil2" Action.
  */
 function doActionAdvantageTypeTwo(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil'>");
+    rollStringsPositive.push("<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil'>");
 		rollResultsPositive[0] += 2;
 }
 
@@ -46,7 +53,7 @@ function doActionAdvantageTypeTwo(whoRolled) {
  * Executes the "erfolg2" Action.
  */
 function doActionSuccessTypeTwo(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg'>");
+    rollStringsPositive.push("<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg'>");
 		rollResultsPositive[1] += 2;
 }
 
@@ -54,7 +61,7 @@ function doActionSuccessTypeTwo(whoRolled) {
  * Executes the "drache" Action.
  */
 function doActionDragon(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>");
+    rollStringsPositive.push("<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>");
 		rollResultsPositive[2]++;
 }
 
@@ -62,7 +69,7 @@ function doActionDragon(whoRolled) {
  * Executes the "nachteil" Action.
  */
 function doActionDisadvantage(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil'>");
+    rollStringsNegative.push("<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil'>");
 		rollResultsNegative[0]++;
 }
 
@@ -70,7 +77,7 @@ function doActionDisadvantage(whoRolled) {
  * Executes the "nachteil2" Action.
  */
 function doActionDisadvantageTypeTwo(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil'>");
+    rollStringsNegative.push("<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil'>");
 		rollResultsNegative[0] += 2;
 }
 
@@ -78,7 +85,7 @@ function doActionDisadvantageTypeTwo(whoRolled) {
  * Executes the "fehlschlag" Action.
  */
 function doActionMiss(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag'>");
+    rollStringsNegative.push("<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag'>");
 		rollResultsNegative[1]++;
 }
 
@@ -86,7 +93,7 @@ function doActionMiss(whoRolled) {
  * Executes the "fehlschlag2" Action.
  */
 function doActionMissTypeTwo(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag'>");
+    rollStringsNegative.push("<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag'>");
 		rollResultsNegative[1] += 2;
 }
 
@@ -94,7 +101,7 @@ function doActionMissTypeTwo(whoRolled) {
  * Executes the "nachteilFehlschlag" Action.
  */
 function doActionDisadvantageMiss(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil'>");
+    rollStringsNegative.push("<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil'>");
 		rollResultsNegative[0]++;
 		rollResultsNegative[1]++;
 }
@@ -103,7 +110,7 @@ function doActionDisadvantageMiss(whoRolled) {
  * Executes the "unheil" Action.
  */
 function doActionUnholy(whoRolled) {
-    sendChat(whoRolled,"/direct <img src='https://i.imgur.com/D9IfpDV.png?1'>");
+    rollStringsNegative.push("<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL'>");
 		rollResultsNegative[2]++;
 }
 
@@ -114,21 +121,22 @@ function doActionUnholy(whoRolled) {
 function rollPositiveDice12(whoRolled) {
 
 	var dice_sides = 12;
+	var dice = ("p" + dice_sides);
 	var roll = randomInteger(dice_sides);
 
 	switch(roll) {
-		case 1: doActionNothing(whoRolled); break;
-		case 2: doActionAdvantage(whoRolled); break;
-		case 3: doActionSuccessAdvantage(whoRolled); break;
-		case 4: doActionAdvantageTypeTwo(whoRolled); break;
-		case 5: doActionSuccess(whoRolled); break;
-		case 6: doActionSuccess(whoRolled); break;
-		case 7: doActionSuccess(whoRolled); break;
-		case 8: doActionSuccessTypeTwo(whoRolled); break;
-		case 9: doActionSuccessTypeTwo(whoRolled); break;
-		case 10: doActionSuccessTypeTwo(whoRolled); break;
-		case 11: doActionSuccessTypeTwo(whoRolled); break;
-		case 12: doActionDragon(whoRolled); break;
+		case 1: doActionNothing(whoRolled, dice); break;
+		case 2: doActionAdvantage(whoRolled, dice); break;
+		case 3: doActionSuccessAdvantage(whoRolled, dice); break;
+		case 4: doActionAdvantageTypeTwo(whoRolled, dice); break;
+		case 5: doActionSuccess(whoRolled, dice); break;
+		case 6: doActionSuccess(whoRolled, dice); break;
+		case 7: doActionSuccess(whoRolled, dice); break;
+		case 8: doActionSuccessTypeTwo(whoRolled, dice); break;
+		case 9: doActionSuccessTypeTwo(whoRolled, dice); break;
+		case 10: doActionSuccessTypeTwo(whoRolled, dice); break;
+		case 11: doActionSuccessTypeTwo(whoRolled, dice); break;
+		case 12: doActionDragon(whoRolled, dice); break;
 	}
 
 }
@@ -139,17 +147,18 @@ function rollPositiveDice12(whoRolled) {
  */
 function rollPositiveDice8(whoRolled) {
 	var dice_sides = 8;
+	var dice = ("p" + dice_sides);
 	var roll = Math.floor(Math.random() * dice_sides +1 );
 
 	switch(roll) {
-		case 1: doActionNothing(whoRolled); break;
-		case 2: doActionAdvantage(whoRolled); break;
-		case 3: doActionAdvantage(whoRolled); break;
-		case 4: doActionSuccess(whoRolled); break;
-		case 5: doActionSuccess(whoRolled); break;
-		case 6: doActionSuccess(whoRolled); break;
-		case 7: doActionSuccessTypeTwo(whoRolled); break;
-		case 8: doActionSuccessTypeTwo(whoRolled); break;
+		case 1: doActionNothing(whoRolled, dice); break;
+		case 2: doActionAdvantage(whoRolled, dice); break;
+		case 3: doActionAdvantage(whoRolled, dice); break;
+		case 4: doActionSuccess(whoRolled, dice); break;
+		case 5: doActionSuccess(whoRolled, dice); break;
+		case 6: doActionSuccess(whoRolled, dice); break;
+		case 7: doActionSuccessTypeTwo(whoRolled, dice); break;
+		case 8: doActionSuccessTypeTwo(whoRolled, dice); break;
 	}
 
 }
@@ -160,15 +169,16 @@ function rollPositiveDice8(whoRolled) {
  */
 function rollPositiveDice6(whoRolled) {
 	var dice_sides = 6;
+	var dice = ("p" + dice_sides);
 	var roll = Math.floor(Math.random() * dice_sides +1 );
 
 	switch(roll) {
-		case 1: doActionNothing(whoRolled); break;
-		case 2: doActionNothing(whoRolled); break;
-		case 3: doActionAdvantage(whoRolled); break;
-		case 4: doActionSuccess(whoRolled); break;
-		case 5: doActionSuccess(whoRolled); break;
-		case 6: doActionSuccessTypeTwo(whoRolled); break;
+		case 1: doActionNothing(whoRolled, dice); break;
+		case 2: doActionNothing(whoRolled, dice); break;
+		case 3: doActionAdvantage(whoRolled, dice); break;
+		case 4: doActionSuccess(whoRolled, dice); break;
+		case 5: doActionSuccess(whoRolled, dice); break;
+		case 6: doActionSuccessTypeTwo(whoRolled, dice); break;
 	}
 }
 
@@ -179,21 +189,22 @@ function rollPositiveDice6(whoRolled) {
  */
 function rollNegativeeDice12(whoRolled) {
 	var dice_sides = 12;
+	var dice = ("n" + dice_sides);
 	var roll = randomInteger(dice_sides);
 
 	switch(roll) {
-		case 1: doActionNothing(whoRolled); break;
-		case 2: doActionDisadvantage(whoRolled); break;
-		case 3: doActionDisadvantageMiss(whoRolled); break;
-		case 4: doActionDisadvantageTypeTwo(whoRolled); break;
-		case 5: doActionMiss(whoRolled); break;
-		case 6: doActionMiss(whoRolled); break;
-		case 7: doActionMiss(whoRolled); break;
-		case 8: doActionMissTypeTwo(whoRolled); break;
-		case 9: doActionMissTypeTwo(whoRolled); break;
-		case 10: doActionMissTypeTwo(whoRolled);  break;
-		case 11: doActionMissTypeTwo(whoRolled); break;
-		case 12: doActionUnholy(whoRolled); break;
+		case 1: doActionNothing(whoRolled, dice); break;
+		case 2: doActionDisadvantage(whoRolled, dice); break;
+		case 3: doActionDisadvantageMiss(whoRolled, dice); break;
+		case 4: doActionDisadvantageTypeTwo(whoRolled, dice); break;
+		case 5: doActionMiss(whoRolled, dice); break;
+		case 6: doActionMiss(whoRolled, dice); break;
+		case 7: doActionMiss(whoRolled, dice); break;
+		case 8: doActionMissTypeTwo(whoRolled, dice); break;
+		case 9: doActionMissTypeTwo(whoRolled, dice); break;
+		case 10: doActionMissTypeTwo(whoRolled, dice);  break;
+		case 11: doActionMissTypeTwo(whoRolled, dice); break;
+		case 12: doActionUnholy(whoRolled, dice); break;
 	}
 }
 
@@ -203,17 +214,18 @@ function rollNegativeeDice12(whoRolled) {
  */
 function rollNegativeeDice8(whoRolled) {
 	var dice_sides = 8;
+	var dice = ("n" + dice_sides);
 	var roll = randomInteger(dice_sides);
 
 	switch(roll) {
-		case 1: doActionNothing(whoRolled); break;
-		case 2: doActionDisadvantage(whoRolled); break;
-		case 3: doActionDisadvantage(whoRolled); break;
-		case 4: doActionMiss(whoRolled); break;
-		case 5: doActionMiss(whoRolled); break;
-		case 6: doActionMiss(whoRolled); break;
-		case 7: doActionMissTypeTwo(whoRolled); break;
-		case 8: doActionMissTypeTwo(whoRolled); break;
+		case 1: doActionNothing(whoRolled, dice); break;
+		case 2: doActionDisadvantage(whoRolled, dice); break;
+		case 3: doActionDisadvantage(whoRolled, dice); break;
+		case 4: doActionMiss(whoRolled, dice); break;
+		case 5: doActionMiss(whoRolled, dice); break;
+		case 6: doActionMiss(whoRolled, dice); break;
+		case 7: doActionMissTypeTwo(whoRolled, dice); break;
+		case 8: doActionMissTypeTwo(whoRolled, dice); break;
 	}
 }
 
@@ -223,14 +235,15 @@ function rollNegativeeDice8(whoRolled) {
  */
 function rollNegativeeDice6(whoRolled) {
 	var dice_sides = 6;
+	var dice = ("n" + dice_sides);
 	var roll = randomInteger(dice_sides);
 	switch(roll) {
-		case 1: doActionNothing(whoRolled); break;
-		case 2: doActionNothing(whoRolled); break;
-		case 3: doActionDisadvantage(whoRolled); break;
-		case 4: doActionMiss(whoRolled); break;
-		case 5: doActionMiss(whoRolled); break;
-		case 6: doActionMissTypeTwo(whoRolled); break;
+		case 1: doActionNothing(whoRolled, dice); break;
+		case 2: doActionNothing(whoRolled, dice); break;
+		case 3: doActionDisadvantage(whoRolled, dice); break;
+		case 4: doActionMiss(whoRolled, dice); break;
+		case 5: doActionMiss(whoRolled, dice); break;
+		case 6: doActionMissTypeTwo(whoRolled, dice); break;
 	}
 }
 
@@ -260,7 +273,6 @@ function rollDice(dice, whoRolled) {
 		log(diceCount);
 
     for (var i = 0; i < diceCount; i++) {
-    sendChat(whoRolled,"/direct  ");
         switch(diceType) {
             case "p12": rollPositiveDice12(whoRolled);  break;
             case "p8":  rollPositiveDice8(whoRolled);   break;
@@ -269,7 +281,6 @@ function rollDice(dice, whoRolled) {
             case "n8":  rollNegativeeDice8(whoRolled); break;
             case "n6":  rollNegativeeDice6(whoRolled); break;
         }
-
     }
 }
 
@@ -313,25 +324,39 @@ function calculateRollResult() {
  */
 function announceRollResults(whoRolled, rollResults) {
 	var rollResultString = [];
-	rollResultString.push(Math.abs(rollResults[0]));
-	if(rollResults[0] >= 0) {
-		rollResultString.push("Vorteile");
-	} else {
-		rollResultString.push("Nachteile")
+	rollResultString.push("Ergebnis: ");
+	if (rollResults[0] != 0) {
+		rollResultString.push(Math.abs(rollResults[0]));
+		if(rollResults[0] >= 0) {
+			rollResultString.push("<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil'>");
+		} else if(rollResults[0] <= 0) {
+			rollResultString.push("<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil'>")
+		}
 	}
-	rollResultString.push(Math.abs(rollResults[1]));
-	if(rollResults[1] >= 0) {
-		rollResultString.push("Erfolge");
-	} else {
-		rollResultString.push("Fehlschläge");
+	if (rollResults[1] != 0) {
+		rollResultString.push(Math.abs(rollResults[1]));
+		if(rollResults[1] >= 0) {
+			rollResultString.push("<img src='https://i.imgur.com/znO45cy.png' title='Erfolg'>");
+		} else if(rollResults[1] <= 0) {
+			rollResultString.push("<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag'>");
+		}
 	}
-	rollResultString.push(Math.abs(rollResults[2]));
-	if(rollResults[2] >= 0) {
-		rollResultString.push("Drachen")
-	} else {
-		rollResultString.push("Unheile")
+	if (rollResults[2] != 0) {
+		rollResultString.push(Math.abs(rollResults[2]));
+		if(rollResults[2] >= 0) {
+			rollResultString.push("<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>")
+		} else if(rollResults[2] <= 0) {
+			rollResultString.push("<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL'>")
+		}
 	}
-	sendChat(whoRolled,rollResultString.join(" "));
+	sendChat(whoRolled, rollStringsPositive.join(" "));
+	sendChat(whoRolled, rollStringsNegative.join(" "));
+	rollStringsPositive = [];
+	rollStringsNegative = [];
+	if(rollResultString.length == 1) {
+		rollResultString.push("Neutral")
+	}
+	sendChat(whoRolled, rollResultString.join(" "));
 }
 
 /*

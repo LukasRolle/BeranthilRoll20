@@ -1,12 +1,18 @@
 // Resources
 
 // items are advantages, successes and crits in that order in the roll order
-// negative roll results are -
+// for both the positive and the negative roll results
 var rollResultsPositive = [0,0,0];
 var rollResultsNegative = [0,0,0];
+
+// Positive and negative strings of the images, that have been rolled are
+// collected in arrays to be written in chat later.
 var rollStringsPositive = [];
 var rollStringsNegative = [];
 
+/*
+ * Executes the "nothing" Action.
+ */
 function doActionNothing(whoRolled, dice) {
 	var image = "<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you'>";
 	if (dice[0] == "p") {
@@ -285,8 +291,13 @@ function rollDice(dice, whoRolled) {
 }
 
 /*
- *
- *
+ * Calculates the roll results, based on the positive and negative results
+ * that were collected beforehand. If a positive or negative critical is scored,
+ * all opposing dice are ignored. A critical can be compensated by having three
+ * opposing successes or failures be left behind, after those have been weighed
+ * against each other.
+ * returns the rollResult, a negative number means that in the complete result
+ * negative dice have "won" the dice throw.
  */
 function calculateRollResult() {
 	var rollResults = [0,0,0];
@@ -304,6 +315,7 @@ function calculateRollResult() {
 		}
 		rollResults[0] = rollResultsPositive[0] - rollResultsNegative[0];
 	}
+
 	if (criticals > 0){
 		rollResults[0] = rollResultsPositive[0];
 		successes = rollResultsPositive[1];

@@ -357,8 +357,6 @@ function rollDice(dice, whoRolled) {
 		if (!diceCount) {
 			diceCount = 1;
 		}
-		log(diceType);
-		log(diceCount);
 
     for (var i = 0; i < diceCount; i++) {
         switch(diceType) {

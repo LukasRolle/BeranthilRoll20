@@ -17,16 +17,16 @@ function doActionNothing(whoRolled, dice) {
 	var image = "";
 	if (dice[0] == "p") {
 		switch(dice.substring(1)) {
-			case "6": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d6'>"; break;
-			case "8": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d8'>"; break;
-			case "12": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d12'>"; break;
+			case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d6_Leer.png' width='30' title='Fuck you d6'>"; break;
+			case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d8_Leer.png' width='30' title='Fuck you d8'>"; break;
+			case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Leer.png' width='30' title='Fuck you d12'>"; break;
 		}
 		rollStringsPositive.push(image);
 	} else {
 		switch(dice.substring(1)) {
-			case "6": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d6'>"; break;
-			case "8": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d8'>"; break;
-			case "12": image = 	"<img src='http://i.imgur.com/8mDF0ZG.png' title='Fuck you d12'>"; break;
+			case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d6_Leer.png' width='30' title='Fuck you d6'>"; break;
+			case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d8_Leer.png' width='30' title='Fuck you d8'>"; break;
+			case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Leer.png' width='30' title='Fuck you d12'>"; break;
 		}
 		rollStringsNegative.push(image);
 	}
@@ -38,9 +38,9 @@ function doActionNothing(whoRolled, dice) {
 function doActionAdvantage(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil d12'>"; break;
+		case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d6_Vorteil.png' width='30' title='Vorteil d6'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d8_Vorteil.png' width='30' title='Vorteil d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Vorteil.png' width='30' title='Vorteil d12'>"; break;
 	}
 	rollStringsPositive.push(image);
 	rollResultsPositive[0]++;
@@ -52,9 +52,9 @@ function doActionAdvantage(whoRolled, dice) {
 function doActionSuccess(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/znO45cy.png' title='Erfolg d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/znO45cy.png' title='Erfolg d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/znO45cy.png' title='Erfolg d12'>"; break;
+		case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d6_Erfolg.png' width='30' title='Erfolg d6'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d8_Erfolg.png' width='30' title='Erfolg d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Erfolg.png' width='30' title='Erfolg d12'>"; break;
 	}
 	rollStringsPositive.push(image);
 	rollResultsPositive[1]++;
@@ -66,9 +66,8 @@ function doActionSuccess(whoRolled, dice) {
 function doActionSuccessAdvantage(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/K1uIGHU.png' title='Erfolg und Vorteil d12'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d8_Vorteil_Erfolg.png' width='30' title='Erfolg und Vorteil d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Vorteil_Erfolg.png' width='30' title='Erfolg und Vorteil d12'>"; break;
 	}
 	rollStringsPositive.push(image);
 	rollResultsPositive[0]++;
@@ -81,9 +80,8 @@ function doActionSuccessAdvantage(whoRolled, dice) {
 function doActionAdvantageTypeTwo(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/dngWmyq.png' title='Doppel Vorteil d12'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d8_Vorteil2.png' width='30' title='Doppel Vorteil d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Vorteil2.png' width='30' title='Doppel Vorteil d12'>"; break;
 	}
 	rollStringsPositive.push(image);
 	rollResultsPositive[0] += 2;
@@ -95,9 +93,9 @@ function doActionAdvantageTypeTwo(whoRolled, dice) {
 function doActionSuccessTypeTwo(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/SJewYE1.png' title='Doppel Erfolg d12'>"; break;
+		case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d6_Erfolg2.png' width='30' title='Doppel Erfolg d6'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d8_Erfolg2.png' width='30' title='Doppel Erfolg d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Erfolg2.png' width='30' title='Doppel Erfolg d12'>"; break;
 	}
 	rollStringsPositive.push(image);
 	rollResultsPositive[1] += 2;
@@ -108,11 +106,7 @@ function doActionSuccessTypeTwo(whoRolled, dice) {
  */
 function doActionDragon(whoRolled, dice) {
 	var image = "";
-	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL d12'>"; break;
-	}
+	image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Drachen.png' width='30' title='CRITICAL d12'>";
 	rollStringsPositive.push(image);
 	rollResultsPositive[2]++;
 }
@@ -123,9 +117,9 @@ function doActionDragon(whoRolled, dice) {
 function doActionDisadvantage(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil d12'>"; break;
+		case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d6_Nachteil.png' width='30' title='Nachteil d6'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d8_Nachteil.png' width='30' title='Nachteil d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Nachteil.png' width='30' title='Nachteil d12'>"; break;
 	}
 	rollStringsNegative.push(image);
 	rollResultsNegative[0]++;
@@ -137,9 +131,8 @@ function doActionDisadvantage(whoRolled, dice) {
 function doActionDisadvantageTypeTwo(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/D4ykHZ4.png?1' title='Doppel Nachteil d12'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d8_Nachteil2.png' width='30' title='Doppel Nachteil d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Nachteil2.png' width='30' title='Doppel Nachteil d12'>"; break;
 	}
 	rollStringsNegative.push(image);
 	rollResultsNegative[0] += 2;
@@ -151,9 +144,9 @@ function doActionDisadvantageTypeTwo(whoRolled, dice) {
 function doActionMiss(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag d12'>"; break;
+		case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d6_Fehlschlag.png' width='30' title='Fehlschlag d6'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d8_Fehlschlag.png' width='30' title='Fehlschlag d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Fehlschlag.png' width='30' title='Fehlschlag d12'>"; break;
 	}
 	rollStringsNegative.push(image);
 	rollResultsNegative[1]++;
@@ -165,9 +158,9 @@ function doActionMiss(whoRolled, dice) {
 function doActionMissTypeTwo(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/bNbz2iv.png?1' title='Doppel Fehlschlag d12'>"; break;
+		case "6": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d6_Fehlschlag2.png' width='30' title='Doppel Fehlschlag d6'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d8_Fehlschlag2.png' width='30' title='Doppel Fehlschlag d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Fehlschlag2.png' width='30' title='Doppel Fehlschlag d12'>"; break;
 	}
 	rollStringsNegative.push(image);
 	rollResultsNegative[1] += 2;
@@ -179,9 +172,8 @@ function doActionMissTypeTwo(whoRolled, dice) {
 function doActionDisadvantageMiss(whoRolled, dice) {
 	var image = "";
 	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/bFQHTY7.png?1' title='Fehlschlag und Nachteil d12'>"; break;
+		case "8": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d8_Nachteil_Fehlschlag.png' width='30' title='Fehlschlag und Nachteil d8'>"; break;
+		case "12": image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Nachteil_Fehlschlag.png' width='30' title='Fehlschlag und Nachteil d12'>"; break;
 	}
 	rollStringsNegative.push(image);
 	rollResultsNegative[0]++;
@@ -193,11 +185,8 @@ function doActionDisadvantageMiss(whoRolled, dice) {
  */
 function doActionUnholy(whoRolled, dice) {
 	var image = "";
-	switch(dice.substring(1)) {
-		case "6": image = 	"<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL d6'>"; break;
-		case "8": image = 	"<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL d8'>"; break;
-		case "12": image = 	"<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL d12'>"; break;
-	}
+	image = 	"<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Unheil.png' width='30' title='UNHEIL d12'>";
+
 	rollStringsNegative.push(image);
 	rollResultsNegative[2]++;
 }
@@ -417,28 +406,28 @@ function calculateRollResult() {
 function announceRollResults(whoRolled, rollResults) {
 	var rollResultString = [];
 	rollResultString.push("Ergebnis: ");
-	if (rollResults[0] != 0) {
-		rollResultString.push(Math.abs(rollResults[0]));
-		if(rollResults[0] >= 0) {
-			rollResultString.push("<img src='https://i.imgur.com/7Y93nwa.png' title='Vorteil'>");
-		} else if(rollResults[0] <= 0) {
-			rollResultString.push("<img src='https://i.imgur.com/7OQBCPz.png?1' title='Nachteil'>")
-		}
-	}
 	if (rollResults[1] != 0) {
 		rollResultString.push(Math.abs(rollResults[1]));
 		if(rollResults[1] >= 0) {
-			rollResultString.push("<img src='https://i.imgur.com/znO45cy.png' title='Erfolg'>");
+			rollResultString.push("<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d6_Erfolg.png' width='30' title='Erfolg'>");
 		} else if(rollResults[1] <= 0) {
-			rollResultString.push("<img src='https://i.imgur.com/xFczeHX.png?1' title='Fehlschlag'>");
+			rollResultString.push("<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d6_Fehlschlag.png' width='30' title='Fehlschlag'>");
+		}
+	}
+	if (rollResults[0] != 0) {
+		rollResultString.push(Math.abs(rollResults[0]));
+		if(rollResults[0] >= 0) {
+			rollResultString.push("<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d6_Vorteil.png' width='30' title='Vorteil'>");
+		} else if(rollResults[0] <= 0) {
+			rollResultString.push("<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d6_Nachteil.png' width='30' title='Nachteil'>")
 		}
 	}
 	if (rollResults[2] != 0) {
 		rollResultString.push(Math.abs(rollResults[2]));
 		if(rollResults[2] >= 0) {
-			rollResultString.push("<img src='https://i.imgur.com/3EJxxMH.jpg' title='CRITICAL'>")
+			rollResultString.push("<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Positiv/d12_Drachen.png' width='30' title='CRITICAL'>")
 		} else if(rollResults[2] <= 0) {
-			rollResultString.push("<img src='https://i.imgur.com/D9IfpDV.png?1' title='UNHEIL'>")
+			rollResultString.push("<img src='http://irondagger.de/Beranthil_Wurfel_roll20/Negativ/d12_Unheil.png' width='30' title='UNHEIL'>")
 		}
 	}
 	sendChat(whoRolled, rollStringsPositive.join(" "));
@@ -492,6 +481,7 @@ function executeChatCommand(command, player) {
 
 	//execute !roll command
 	if (command.indexOf("!roll") == 0) {
+		sendChat(player, "/me Würfelt");
 		sendChat(player,("/direct Rolled " + command.substring(6)));
 		//Get the dice from the command.
 		command = command.split(" ");

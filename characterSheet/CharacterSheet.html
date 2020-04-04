@@ -1,35 +1,48 @@
+<div align="center"><img src="https://beranthil.de/wp-content/uploads/2018/09/BL_Banner.png" width="300px" style="margin-bottom:20px"> </div>
+<div align="center" style="margin-bottom:20px; padding:0px;">
+<button type="" name="" style="background: url(https://i.imgur.com/ZdVdanR.png); height: 115px; width:75px; border:0px; margin:0px; padding:0px;"></button><button type="action" name="act_character" style="background: url(https://i.imgur.com/9aXYgyf.png); height: 115px; width:226px; border:0px; margin:0px; padding:0px;"></button><button type="action" name="act_Inventory" style="background: url(https://i.imgur.com/UMflOJd.png); height: 115px; width:139px; border:0px; margin:0px; padding:0px;"></button><button type="action" name="act_SpecialAbilities" style="background: url(https://i.imgur.com/TDhFAD1.png); height: 115px; width:264px; border:0px; margin:0px; padding:0px;" ></button><button type="" name="" style="background: url(https://i.imgur.com/0sQ99ab.png); height: 115px; width:71px; border:0px; margin:0px; padding:0px;"></button>
+</div>
+<input type='hidden' class='sheet-tabstoggle' name='attr_sheetTab'  value='character'  />
+
+<div class='sheet-character'>
 <span name="attr_Fertigkeits_Wert"></span>
 <span name="attr_Eigenschafts_Wert"></span>
 <!-- Sheet roll html -->
+<div style="background: url(https://i.imgur.com/YwZCVuf.png); background-size: 384px; width:400px; margin:auto; background-repeat: no-repeat; background-position: center;">
 <table align="center" style="margin-bottom:20px;">
   <tr>
     <td></td>
-    <td>d12</td>
-    <td>d8</td>
-    <td>d6</td>
-    <td>Übrige Würfel: <span name="attr_SR_RemainingDice" value="0" /></td>
-    <td><input type="checkbox" name="attr_SR_ResetButton" checked="true" /></td>
+    <td><button type="roll" style="opacity: 0;" name="roll_SheetRollSplit" value="!roll 1p12"/> d12 </button></td>
+    <td><button type="roll" style="opacity: 0;" name="roll_SheetRollSplit" value="!roll 1p8"/> d8 </button></td>
+    <td><button type="roll" style="opacity: 0;" name="roll_SheetRollSplit" value="!roll 1p6"/> d6 </button></td>
+    <td><input type="checkbox" name="attr_SR_ResetButton" checked="true" style="opacity: 0; z-index:0; position:relative; left:-30px; top:0px; width:30px; height:30px;"><img style="z-index:-1; position:relative; left:0px; top:0px;" src="https://beranthil.de/wp-content/uploads/2020/03/d12_Drachen.png" align="left" width="30px"/></td>
   </tr>
   <tr>
-    <td>Positive Würfel:</td>
-    <td><input type="number" name="attr_Die_D12" /></td>
-    <td><input type="number" name="attr_Die_D8" /></td>
-    <td><input type="number" name="attr_Die_D6" /></td>
-    <td>Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
-    <td><button type="roll" name="roll_SheetRollSplit" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></td>
+    <td style="color: white;">&nbsp;Positive Würfel:</td>
+    <td align="center"><input type="number" name="attr_Die_D12"  style="border: 0px; background-color: transparent; color: white;"/></td>
+    <td align="center"><input type="number" name="attr_Die_D8"  style="border: 0px; background-color: transparent; color: white;"/></td>
+    <td align="center"><input type="number" name="attr_Die_D6"  style="border: 0px; background-color: transparent; color: white;"/></td>
+    <td colspan="3" style="color: white;"> Übrige Würfel: <span name="attr_SR_RemainingDice" value="0" /></td>
   </tr>
   <tr>
-    <td>Negative Würfel:</td>
-    <td><input type="number" name="attr_Die_N12" /></td>
-    <td><input type="number" name="attr_Die_N8" /></td>
-    <td><input type="number" name="attr_Die_N6" /></td>
-    <td>Wurf mit Schwierigkeitsstufe </td>
-    <td><button type="roll" name="roll_SheetRollComplete"
-      value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6 @{Die_N12}n12 @{Die_N8}n8 @{Die_N6}n6" /></td>
+    <td style="color: white;">&nbsp;Negative Würfel:</td>
+    <td align="center"><input type="number" name="attr_Die_N12"  style="border: 0px; background-color: transparent; color: white;"/></td>
+    <td align="center"><input type="number" name="attr_Die_N8"  style="border: 0px; background-color: transparent; color: white;"/></td>
+    <td align="center"><input type="number" name="attr_Die_N6"  style="border: 0px; background-color: transparent; color: white;"/></td>
+    <td colspan="3" style="color: white;"> Übrige SP: <span name="attr_SR_RemainingSteigerungspunkte" value="0" /></td>
+  </tr>
+  <tr style="margin-top: 5px;">
+    <td></td>
+    <td><button type="roll" style="opacity: 0;" name="roll_SheetRollSplit" value="!roll 1n12"/> d12 </button></td>
+    <td><button type="roll" style="opacity: 0;" name="roll_SheetRollSplit" value="!roll 1n8"/> d8 </button></td>
+    <td><button type="roll" style="opacity: 0;" name="roll_SheetRollSplit" value="!roll 1n6"/> d6 </button></td>
+    <td><button style="opacity: 0; z-index:0; position:relative; left:-30px; top:0px;"type="roll" name="roll_SheetRollSplit" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6" /></button><img style="z-index:-1; position:relative; left:0px; top:0px;" src="https://beranthil.de/wp-content/uploads/2020/03/d12_Drachen.png" align="left" width="30px"></td>
+    <td><button style="opacity: 0; z-index:0; position:relative; left:-30px; top:0px;" type="roll" name="roll_SheetRollComplete" value="!roll @{Die_D12}p12 @{Die_D8}p8 @{Die_D6}p6 @{Die_N12}n12 @{Die_N8}n8 @{Die_N6}n6" /></button><img style="z-index:-1; position:relative; left:0px; top:0px;" src="https://beranthil.de/wp-content/uploads/2020/03/d12_Drachen.png" align="left" width="30px"></td>
+
   </tr>
 </table>
-
-<table>
+</div>
+<table align="center">
     <tr>
         <td valign="top" align="center" width="50%">
 <!-- Name & Konzept -->
@@ -411,7 +424,191 @@ Anzahl an Steigerungspunkten: <span name="attr_Steigerungspunkte"></span>
 <input type="hidden" name="attr_currentFertigkeitsValue" value="0">
 <input type="hidden" name="attr_currentEigenschaftsValue" value="0">
 
+</div>
+<div class='sheet-Inventory'>
+    <h2>Inventar</h2>
+<table>
+<tr>
+<td width="210px">Gegestand</td>
+<td> Anzahl </td>
+</tr>
+</table>
+<input type="text" name="Inventory">
+<input type="number" name="Inventory_number">
+<fieldset class="repeating_skills">
+<input type="text" name="Inventory_1">
+<input type="number" name="Inventory_1_number">
+</fieldset>
+
+</div>
+
+
+
+
+<div class='sheet-SpecialAbilities'>
+    <h2 style="margin-bottom:20px">Spezial Fertigkeiten</h2>
+<table width="100%">
+         <tr>
+             <th colspan="2" width="50%" style="text-align:center;">1. Spezial Fertigkeit</td>
+             <th colspan="2" width="50%" style="text-align:center;">2. Spezial Fertigkeit</td>
+         </tr>
+         <tr>
+             <td></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_1"></td>
+             <td></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_2"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_1_expl"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_2_expl"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/StPWvVr.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_1_E"></td>
+             <td><img src="https://i.imgur.com/StPWvVr.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_2_E"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_1_expl_E"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_2_expl_E"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/Czov1Vw.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_1_leicht"></td>
+             <td><img src="https://i.imgur.com/Czov1Vw.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_2_leicht"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td style="text-align:center;"><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_1_expl_leicht"></textarea></td>
+             <td></td>
+             <td style="text-align:center;"><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_2_expl_leicht"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/AmSFUxH.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_1_stark"></td>
+             <td><img src="https://i.imgur.com/AmSFUxH.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_2_stark"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_1_expl_stark"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_2_expl_stark"></textarea></td>
+         </tr>
+         <tr>
+             <th colspan="2" width="50%" style="text-align:center;">3. Spezial Fertigkeit</td>
+             <th colspan="2" width="50%" style="text-align:center;">4. Spezial Fertigkeit</td>
+         </tr>
+
+         <tr>
+             <td></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_3"></td>
+             <td></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_4"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_3_expl"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_4_expl"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/StPWvVr.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_3_E"></td>
+             <td><img src="https://i.imgur.com/StPWvVr.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_4_E"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_3_expl_E"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_4_expl_E"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/Czov1Vw.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_3_leicht"></td>
+             <td><img src="https://i.imgur.com/Czov1Vw.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_4_leicht"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_3_expl_leicht"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_4_expl_leicht"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/AmSFUxH.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_3_stark"></td>
+             <td><img src="https://i.imgur.com/AmSFUxH.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_4_stark"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_3_expl_stark"></textarea></td>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_4_expl_stark"></textarea></td>
+         </tr>
+         <tr>
+             <th colspan="2" width="50%" style="text-align:center;">5. Spezial Fertigkeit</td>
+         </tr>
+         <tr>
+             <td></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_5"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_5_expl"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/StPWvVr.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_5_E"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_5_expl_E"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/Czov1Vw.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_5_leicht"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_5_expl_leicht"></textarea></td>
+         </tr>
+         <tr>
+             <td><img src="https://i.imgur.com/AmSFUxH.png"></td>
+             <td style="text-align:center;"><input type="text" name="attr_Sp_Fertigkeit_5_stark"></td>
+         </tr>
+        <tr>
+             <td></td>
+             <td><textarea id="multiliner" name=" name="attr_Sp_Fertigkeit_5_stark"></textarea></td>
+         </tr>
+     </table>
+
+
+
+</div>
+
+
+
+
+
+
 <script type="text/worker">
+    const buttonlist = ["character","Inventory","SpecialAbilities"];
+    buttonlist.forEach(button => {
+        on(`clicked:${button}`, function() {
+            setAttrs({
+                sheetTab: button
+            });
+        });
+    });
+
 
 // Sets the physical health of the character, based on stamina.
 on("change:Ausdauer", function() {
@@ -523,4 +720,5 @@ var updateRemainingSteigerungspunkte = function() {
 };
 // ... etc
 </script>
-test46
+
+

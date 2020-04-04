@@ -1,0 +1,13 @@
+/*Configure the tab buttons*/
+.sheet-character,
+.sheet-Inventory,
+.sheet-SpecialAbilities {
+	display: none;
+}
+
+/* show the selected tab */
+.sheet-tabstoggle[value="character"] ~ div.sheet-character,
+.sheet-tabstoggle[value="Inventory"] ~ div.sheet-Inventory,
+.sheet-tabstoggle[value="SpecialAbilities"] ~ div.sheet-SpecialAbilities {
+	display: block;
+}
